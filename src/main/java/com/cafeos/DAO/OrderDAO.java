@@ -1,0 +1,88 @@
+package com.cafeos.DAO;
+
+import com.cafeos.bean.Order;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+public class OrderDAO 
+{
+	public static List<Order> getAllOrder()
+	{
+		List<Order> list = new ArrayList<Order>();
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM `order`;");
+			ResultSet rs = pst.executeQuery();
+			
+			while (rs.next())
+			{
+				Order o = new Order();
+				
+				o.setOrderId(rs.getInt("orderId"));
+				o.setUserId(rs.getInt("userId"));
+				o.setOrderNames(rs.getString("orderNames"));
+				o.setTotalPrice(rs.getFloat("totalPrice"));
+				o.setDate(rs.getString("date"));
+				o.setIsCompleted((short)rs.getInt("isCompleted"));
+				
+				list.add(o);
+			}
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return list;
+	}
+	
+	public static Order getbyId(int id)
+	{
+		Order o = null;
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM order WHERE id=?;");
+			
+			pst.setInt(1, id);
+			
+			ResultSet rs = pst.executeQuery();
+			o = new Order();
+			
+			while (rs.next())
+			{				
+				o.setOrderId(rs.getInt("orderId"));
+				o.setUserId(rs.getInt("userId"));
+				o.setOrderNames(rs.getString("orderNames"));
+				o.setTotalPrice(rs.getFloat("totalPrice"));
+				o.setDate(rs.getString("date"));
+				o.setIsCompleted((short)rs.getInt("isCompleted"));
+			}
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return o;
+	}
+	
+	public static int completeOrder(int id)
+	{
+		int status = 0;
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("UPDATE order SET isCompleted=1 WHERE orderId=?;");
+			
+			pst.setInt(1, id);
+			
+			status = pst.executeUpdate();
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return status;
+	}
+}
