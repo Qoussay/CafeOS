@@ -18,6 +18,12 @@
 		
 		<h1>Order List - CafeOS</h1>
 		
+		<div>
+			<strong>Order List</strong> &#9679;
+			<a href="menulist.jsp">Menu List</a> &#9679;
+			<a href="userlist.jsp">User List</a>	
+		</div>	
+		
 		<table border="1" style="width: 100%; margin-top: 20px;">
 			<tr>
 				<th>ID</th>

@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Menu | CafeOS</title>
+		<title>User | CafeOS</title>
 	</head>
 	<body>
 		<%@ page import="com.cafeos.DAO.UserDAO, com.cafeos.bean.User, java.util.*" %>
@@ -16,7 +16,13 @@
 			request.setAttribute("list", list);
 		%>
 		
-		<h1>Menu List - CafeOS</h1>
+		<h1>User List - CafeOS</h1>
+		
+		<div>
+			<a href="orderlist.jsp">Order List</a> &#9679;
+			<a href="menulist.jsp">Menu List</a> &#9679;
+			<strong>User List</strong>	
+		</div>	
 		
 		<table border="1" style="width: 100%; margin-top: 20px;">
 			<tr>
