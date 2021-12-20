@@ -7,4 +7,7 @@ SWE306 - Programming Elective II (1) Group Final Assignment
 3. setup database
 
 # Todo List
-- [x] Write here
+- [ ] Revamp Staff Dashboard -> @ravendinata
+- [ ] Login (and Register (?)) -> @cyyberhdd
+- [ ] Order Form (A list of all menu items, selectable using checkboxes.) -> Unassigned
+- [ ] Checkout Form (Items in Order Form will be processed here. Item names aggregation, price calculation, date and time assignment, etc.) -> Unassigned
