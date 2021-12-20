@@ -36,4 +36,51 @@ public class MenuDAO
 		
 		return list;
 	}
+	
+	public static Menu getbyId(int id)
+	{
+		Menu m = null;
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM `order` WHERE id=?;");
+			
+			pst.setInt(1, id);
+			
+			ResultSet rs = pst.executeQuery();
+			m = new Menu();
+			
+			while (rs.next())
+			{				
+				m.setMenuId(rs.getInt("menuId"));
+				m.setCategoryId(rs.getInt("categoryId"));
+				m.setName(rs.getString("name"));
+				m.setPrice(rs.getFloat("price"));
+			}
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return m;
+	}
+	
+	public static String getCategoryString(int id)
+	{
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("SELECT name FROM `category` WHERE categoryId=?;");
+			
+			pst.setInt(1, id);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			rs.next();
+			
+			return rs.getString("name");
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return "Error";
+	}
 }

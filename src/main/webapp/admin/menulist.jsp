@@ -36,7 +36,7 @@
 					<td>${item.getMenuId()}</td>
 					<td>${item.getName()}</td>
 					<td>${item.getPrice()}</td>
-					<td>${item.getCategoryId()}</td>
+					<td>${item.categoryToString()}</td>
 				</tr>
 			</c:forEach>
 		</table>

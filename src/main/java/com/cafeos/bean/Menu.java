@@ -1,5 +1,7 @@
 package com.cafeos.bean;
 
+import com.cafeos.DAO.MenuDAO;
+
 public class Menu 
 {
 	private int menuId, categoryId;
@@ -12,6 +14,7 @@ public class Menu
 	
 	public int getCategoryId() { return categoryId;	}
 	public void setCategoryId(int categoryId) {	this.categoryId = categoryId; }
+	public String categoryToString() { return MenuDAO.getCategoryString(categoryId); }
 	
 	public String getName() { return name; }
 	public void setName(String name) { this.name = name; }

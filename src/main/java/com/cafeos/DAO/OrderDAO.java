@@ -10,6 +10,28 @@ import java.util.List;
 
 public class OrderDAO 
 {
+	public static int save(Order o)
+	{
+		int status = 0;
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("INSERT INTO order(userId, orderNames, totalPrice, date, isCompleted) values(?,?,?,?,?);");
+			
+			pst.setInt(1, o.getUserId());
+			pst.setString(2, o.getOrderNames());
+			pst.setFloat(3, o.getTotalPrice());
+			pst.setString(4, o.getDate());
+			pst.setInt(5, 0);
+			
+			status = pst.executeUpdate();
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return status;	
+	}
+	
 	public static List<Order> getAllOrder()
 	{
 		List<Order> list = new ArrayList<Order>();
@@ -39,6 +61,35 @@ public class OrderDAO
 		return list;
 	}
 	
+	public static List<Order> getPendingOrder()
+	{
+		List<Order> list = new ArrayList<Order>();
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM `order` WHERE isCompleted=0;");
+			ResultSet rs = pst.executeQuery();
+			
+			while (rs.next())
+			{				
+				Order o = new Order();
+				
+				o.setOrderId(rs.getInt("orderId"));
+				o.setUserId(rs.getInt("userId"));
+				o.setOrderNames(rs.getString("orderNames"));
+				o.setTotalPrice(rs.getFloat("totalPrice"));
+				o.setDate(rs.getString("date"));
+				o.setIsCompleted((short)rs.getInt("isCompleted"));
+				
+				list.add(o);
+			}
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return list;
+	}
+	
 	public static Order getbyId(int id)
 	{
 		Order o = null;
@@ -46,7 +97,7 @@ public class OrderDAO
 		try
 		{
 			Connection con = ConHandler.getConnection();
-			PreparedStatement pst = con.prepareStatement("SELECT * FROM order WHERE id=?;");
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM `order` WHERE id=?;");
 			
 			pst.setInt(1, id);
 			
@@ -75,7 +126,7 @@ public class OrderDAO
 		try
 		{
 			Connection con = ConHandler.getConnection();
-			PreparedStatement pst = con.prepareStatement("UPDATE order SET isCompleted=1 WHERE orderId=?;");
+			PreparedStatement pst = con.prepareStatement("UPDATE `order` SET isCompleted=1 WHERE orderId=?;");
 			
 			pst.setInt(1, id);
 			
