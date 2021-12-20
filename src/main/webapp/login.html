@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ======== FONT AWESOME ICONS ======== -->
+    <script src="https://kit.fontawesome.com/bae18c500b.js" crossorigin="anonymous"></script>
+
+    <!-- ======== STYLE CSS ======== -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <!-- ======== TITLE ======== -->
+    <title>Java Beans - Login</title>
+</head>
+<body>
+    <!-- ======== HEADER ======== -->
+    <header class="header">
+        <h2 class="header-logo">
+            <a href="index.html">Java Beans</a>
+        </h2>
+        <i class="fas fa-bars header-toggle" id="header-toggle"></i>
+
+        <nav class="nav" id="nav">
+            <i class="fas fa-times nav-close" id="nav-close"></i>
+
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
+                <li class="nav-item"><a href="register.html" class=" btn-primary">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ======== LOGIN SECTION ======== -->
+    <section class="login-section section">
+        <div class="login-container container">
+            <form class="login-form" action="" method="POST">
+                <h1 class="login-title">Login</h1>
+                <div class="login-input">
+                    <p>Username:</p>
+                    <input id="login-name" required type="text" placeholder="Name" name="username">
+                </div>
+                <div class="login-input">
+                    <p>Password:</p>
+                    <input id="login-password" required type="password" placeholder="Password" name="password">
+                </div>
+                <div class="login-buttons">
+                    <button class="btn-primary" type="submit">Login</button>
+                </div>
+                <p>Don't have an account yet? <span><a class="login-link" href="register.html">Register here.</a></span></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- ======== FOOTER SECTION ======== -->
+    <footer class="footer">
+        JAVA BEANS COPYRIGHT
+    </footer>
+    
+    <!-- ======== MAIN JS ======== -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>
