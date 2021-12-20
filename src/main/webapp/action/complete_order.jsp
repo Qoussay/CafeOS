@@ -18,16 +18,16 @@
 			if (request.getParameter("do").equals("complete"))
 			{
 				int i = OrderDAO.completeOrder(id);				
-				response.sendRedirect("../staff-dashboard.jsp?action=complete&orderId=" + id);
+				response.sendRedirect("../admin/staff-dashboard.jsp?action=complete&orderId=" + id);
 			}
 			else if (request.getParameter("do").equals("undo"))
 			{
 				int i = OrderDAO.undoCompleteOrder(id);
-				response.sendRedirect("../staff-dashboard.jsp?action=undo&orderId=" + id);
+				response.sendRedirect("../admin/staff-dashboard.jsp?action=undo&orderId=" + id);
 			}
 			else
 			{
-				response.sendRedirect("../staff-dashboard.jsp?action=bad");
+				response.sendRedirect("../admin/staff-dashboard.jsp?action=bad");
 			}
 		%>
 	</body>

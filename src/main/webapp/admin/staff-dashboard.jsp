@@ -4,8 +4,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="ISO-8859-1">
-	<title>Staff Dashboard | CafeOS</title>
+		<meta charset="ISO-8859-1">
+		<title>Staff Dashboard | CafeOS</title>
+		<style>
+			td { text-align: center; }
+		</style>
 	</head>
 	<body>
 		<%@ page import="com.cafeos.DAO.OrderDAO, com.cafeos.bean.Order, java.util.*, java.io.*" %>
@@ -36,8 +39,10 @@
 		%>
 		
 		<h1>Pending Orders: <c:out value="${listLength}"></c:out></h1>
-		<p>Last Refresh: <c:out value="${time}"></c:out> ||
-		   <a href="staff-dashboard.jsp">Refresh</a>
+		<p>
+		   	Last Refresh: <c:out value="${time}"></c:out> || 
+		   	<input type="button" onclick="location.href='staff-dashboard.jsp';" value="Refresh" /> 
+		   	<input type="button" onclick="location.href='orderlist.jsp';" value="View All Orders" />
 		</p>
 		
 		<c:if test="${param.action != null}">
@@ -49,7 +54,7 @@
 				<c:if test="${param.action == 'complete'}">
 					<p>
 						Successfully completed order with ID: <c:out value="${param.orderId}"></c:out> :::
-						<a href="action/complete_order.jsp?do=undo&orderId=${param.orderId}">Undo Complete Order</a></span>
+						<span><input type="button" onclick="location.href='../action/complete_order.jsp?do=undo&orderId=${param.orderId}';" value="Undo" /></span>
 					</p>
 				</c:if>
 				<c:if test="${param.action == 'undo'}">
@@ -59,7 +64,7 @@
 			</c:choose>
 		</c:if>
 		
-		<table border="1" style="width: 100%; margin-top: 20px;">
+		<table border="1" style="width: 100%; margin-top: 20px; border-collapse: collapse;">
 			<tr>
 				<th>ID</th>
 				<th>Customer</th>
@@ -75,7 +80,9 @@
 					<td>${item.getOrderNames()}</td>
 					<td>${item.getTotalPrice()}</td>
 					<td>${item.getDate()}</td>
-					<td><a href="action/complete_order.jsp?do=complete&orderId=${item.getOrderId()}">Complete</a></td>
+					<td>
+						<input type="button" onclick="location.href='../action/complete_order.jsp?do=complete&orderId=${item.getOrderId()}';" value="Complete" />
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
