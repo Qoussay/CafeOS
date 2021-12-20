@@ -7,4 +7,4 @@ SWE306 - Programming Elective II (1) Group Final Assignment
 3. setup database
 
 # Todo List
-[x] Write here...
+- [x] Write here
