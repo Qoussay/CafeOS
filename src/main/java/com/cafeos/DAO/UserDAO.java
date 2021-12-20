@@ -48,6 +48,10 @@ public class UserDAO
 			pst.setString(4, u.getPassword());
 			
 			pst.setInt(5, u.getUserId()); // <= WHERE Condition
+			
+			status = pst.executeUpdate();
+			
+			System.out.println(status);
 		}
 		catch (Exception ex) { System.out.println(ex); }
 		
@@ -64,6 +68,8 @@ public class UserDAO
 			PreparedStatement pst = con.prepareStatement("DELETE FROM user WHERE userId=?;");
 			
 			pst.setInt(1, u.getUserId()); // <= WHERE Condition
+			
+			status = pst.executeUpdate();
 		}
 		catch (Exception ex) { System.out.println(ex); }
 		
@@ -106,7 +112,7 @@ public class UserDAO
 		try
 		{
 			Connection con = ConHandler.getConnection();
-			PreparedStatement pst = con.prepareStatement("SELECT * FROM user WHERE id=?;");
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM user WHERE userId=?;");
 			
 			pst.setInt(1, id);
 			

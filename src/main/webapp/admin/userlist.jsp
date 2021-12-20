@@ -32,6 +32,7 @@
 				<th>Email</th>
 				<th>Password</th>
 				<th>Admin?</th>
+				<th>Actions</th>
 			</tr>
 			<c:forEach items="${list}" var="item">
 				<tr>
@@ -41,6 +42,10 @@
 					<td>${item.getEmail()}</td>
 					<td>${item.getPassword()}</td>
 					<td>${item.getIsAdmin()}</td>
+					<td>
+						<a href="userform.jsp?userId=${item.getUserId()}">Update</a><br/>						
+						<a href="../action/delete_user.jsp?userId=${item.getUserId()}">Delete</a><br/>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
