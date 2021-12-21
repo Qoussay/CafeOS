@@ -136,4 +136,22 @@ public class OrderDAO
 		
 		return status;
 	}
+	
+	public static int undoCompleteOrder(int id)
+	{
+		int status = 0;
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("UPDATE `order` SET isCompleted=0 WHERE orderId=?;");
+			
+			pst.setInt(1, id);
+			
+			status = pst.executeUpdate();
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return status;
+	}
 }
