@@ -157,4 +157,26 @@ public class UserDAO
 		return status;
 		
 	}
+	
+	//validate if email already exist
+	public boolean validateEmail(User u) {
+			
+			boolean status = false;
+			
+			try
+			{
+				Connection con = ConHandler.getConnection();
+				PreparedStatement pst = con.prepareStatement("SELECT * FROM user WHERE email=?");
+				
+				pst.setString(1, u.getEmail());
+				
+				ResultSet rs = pst.executeQuery();
+				status = rs.next();
+				//System.out.println(status); //check status
+			}
+			catch (Exception ex) { System.out.println(ex); }
+			
+			return status;
+			
+		}
 }
