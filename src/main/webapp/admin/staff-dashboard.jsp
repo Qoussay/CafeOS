@@ -7,7 +7,7 @@
 		<meta charset="ISO-8859-1">
 		<title>Staff Dashboard | CafeOS</title>
 		<style>
-			td { text-align: center; }
+			th, td { text-align: center; padding: 10px; }
 		</style>
 	</head>
 	<body>
@@ -18,7 +18,7 @@
 			// Auto Refresh Every 30 seconds
 			response.setIntHeader("Refresh", 30);
 		
-			List<Order> list = OrderDAO.getPendingOrder();
+			List<Order> list = OrderDAO.filterOrderByStatus(null, (short) 0);
 			request.setAttribute("list", list);
 			request.setAttribute("listLength", list.size());
 			
@@ -40,9 +40,9 @@
 		
 		<h1>Pending Orders: <c:out value="${listLength}"></c:out></h1>
 		<p>
-		   	Last Refresh: <c:out value="${time}"></c:out> || 
+		   	Last Refresh: <c:out value="${time}"></c:out> <i>(Refresh every 30 seconds)</i> || 
 		   	<input type="button" onclick="location.href='staff-dashboard.jsp';" value="Refresh" /> 
-		   	<input type="button" onclick="location.href='orderlist.jsp';" value="View All Orders" />
+		   	<input type="button" onclick="location.href='orderlist.jsp';" value="View All Orders (Admin View)" />
 		</p>
 		
 		<c:if test="${param.action != null}">
@@ -64,7 +64,7 @@
 			</c:choose>
 		</c:if>
 		
-		<table border="1" style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+		<table border="1" style="width: 100%; margin-top: 20px;">
 			<tr>
 				<th>ID</th>
 				<th>Customer</th>
@@ -86,5 +86,12 @@
 				</tr>
 			</c:forEach>
 		</table>
+		
+		<br/><hr/>
+		<p>
+			<strong>Session Information:</strong><br/>
+			Session ID: <c:out value="${pageContext.session.id}"/><br/>
+			Logged in user: <c:out value="${sessionScope.username}"/>
+		</p>
 	</body>
 </html>

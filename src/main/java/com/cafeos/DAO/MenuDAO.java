@@ -10,6 +10,67 @@ import java.util.List;
 
 public class MenuDAO 
 {
+	public static int save(Menu m)
+	{
+		int status = 0;
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("INSERT INTO menu(name, price, categoryId) values(?,?,?);");
+			
+			pst.setString(1, m.getName());
+			pst.setFloat(2, m.getPrice());
+			pst.setInt(3, m.getCategoryId());
+			
+			status = pst.executeUpdate();
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return status;
+	}
+	
+	public static int update(Menu m)
+	{
+		int status = 0;
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("UPDATE menu SET name=?, price=? WHERE menuId=?;");
+				
+			pst.setString(1, m.getName());
+			pst.setFloat(2, m.getPrice());
+			
+			pst.setInt(3, m.getMenuId()); // <= WHERE Condition
+			
+			status = pst.executeUpdate();
+			
+			System.out.println(status);
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return status;
+	}
+	
+	public static int delete(Menu m)
+	{
+		int status = 0;
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("DELETE FROM menu WHERE menuId=?;");
+			
+			pst.setInt(1, m.getMenuId()); // <= WHERE Condition
+			
+			status = pst.executeUpdate();
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return status;
+	}
+	
 	public static List<Menu> getAllMenu()
 	{
 		List<Menu> list = new ArrayList<Menu>();
@@ -37,14 +98,14 @@ public class MenuDAO
 		return list;
 	}
 	
-	public static Menu getbyId(int id)
+	public static Menu getById(int id)
 	{
 		Menu m = null;
 		
 		try
 		{
 			Connection con = ConHandler.getConnection();
-			PreparedStatement pst = con.prepareStatement("SELECT * FROM `order` WHERE id=?;");
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM `menu` WHERE menuId=?;");
 			
 			pst.setInt(1, id);
 			
@@ -82,5 +143,5 @@ public class MenuDAO
 		catch (Exception ex) { System.out.println(ex); }
 		
 		return "Error";
-	}
+	}	
 }
