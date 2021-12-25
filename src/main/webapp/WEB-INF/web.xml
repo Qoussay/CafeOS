@@ -29,4 +29,14 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
+<servlet>
+    <description></description>
+    <display-name>AddToCart</display-name>
+    <servlet-name>AddToCart</servlet-name>
+    <servlet-class>com.cafeos.web.AddToCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddToCart</servlet-name>
+    <url-pattern>/menu</url-pattern>
+  </servlet-mapping>
 </web-app>
