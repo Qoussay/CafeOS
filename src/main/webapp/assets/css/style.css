@@ -896,6 +896,10 @@ a, a:hover, a:focus, a:visited, a:active{
     margin-top: 2rem;
 }
 
+.total-price-field {
+	padding-bottom:2%;
+}
+
 /* ======== FOOTER SECTION ======== */
 .footer{
     padding: 2rem 1rem;

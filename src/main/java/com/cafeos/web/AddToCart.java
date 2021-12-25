@@ -1,6 +1,7 @@
 package com.cafeos.web;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import com.cafeos.DAO.UserDAO;
 import com.cafeos.bean.User;
@@ -13,8 +14,10 @@ import jakarta.servlet.http.HttpServletResponse;
 public class AddToCart  extends jakarta.servlet.http.HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	public String[][] order_array = new String[2][10];
-	public int counter=0;
+	public static String[] order_name = new String[10];
+	public static String[] order_price = new String[10];
+	public static int counter=0;
+	public static float total_price = 0f;
 
     /**
      * Default constructor. 
@@ -38,16 +41,36 @@ public class AddToCart  extends jakarta.servlet.http.HttpServlet {
 		String item_name = request.getParameter("item_name");
 		String item_price = request.getParameter("item_price");
 		
-		order_array[0][counter] = item_name;
-		order_array[1][counter] = item_price;
+		order_name[counter] = item_name;
+		order_price[counter] = item_price;
 		
 		counter ++;
+		total_price += Float.parseFloat(item_price);
 		
 		for (int i = 0; i < 10; i++) {
-			  System.out.println("item " + i + ": " + order_array[0][i] + "/" + order_array[1][i]);
+			  System.out.println("item " + i + ": " + order_name[i] + "/" + order_price[i]);
 		}
 		
 		response.sendRedirect("menu.html");
+	}
+	
+	
+	public static int getCounter() {
+		return counter;
+	}
+	
+	public static String getOrderNameArray() {
+		String order_name_str = Arrays.toString(order_name);
+		return order_name_str;
+	}
+	
+	public static String getOrderPriceArray() {
+		String order_price_str = Arrays.toString(order_price);
+		return order_price_str;
+	}
+	
+	public static Float getTotalPrice() {
+		return total_price;
 	}
 
 }
