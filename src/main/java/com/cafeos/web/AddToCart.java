@@ -1,9 +1,13 @@
 package com.cafeos.web;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
+import com.cafeos.DAO.OrderDAO;
 import com.cafeos.DAO.UserDAO;
+import com.cafeos.bean.Order;
 import com.cafeos.bean.User;
 
 import jakarta.servlet.ServletException;
@@ -60,13 +64,32 @@ public class AddToCart  extends jakarta.servlet.http.HttpServlet {
 			order_name_str = order_name_str.replace(", null", "");
 			System.out.println(order_name_str);
 			
+			//getDate
+			String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+			System.out.println(date);
+			
+			//create an order
+			Order order = new Order();
+			order.setDate(date);
+			order.setIsCompleted((short) 0);
+			order.setOrderNames(order_name_str);
+			order.setTotalPrice(total_price);
+			order.setUserId(1);
+			
+			OrderDAO orderDAO = new OrderDAO();
+			
 			//reset variables
 			order_name = new String[10];
 			order_price = new String[10];
 			counter=0;
 			total_price = 0f;
 			
-			response.sendRedirect("index.html");
+			if(OrderDAO.save(order)==0) {
+				response.sendRedirect("index.html");
+			}
+			else {
+				response.sendRedirect("index.html");
+			}
 		}
 	}
 	

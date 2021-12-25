@@ -76,10 +76,12 @@
                     <h2 class="checkout-name ">Total Price</h2>
                     <h3 class="checkout-price">RM <% out.print(total_price);%></h3>
                 </div>
+                <!-- 
                 <div class="checkout-input">
                     <p>Table Number:</p>
                     <input  placeholder="No." type="number" name="tableNumber">
                 </div>
+                 -->
                 <input type="hidden" name="request" value="checkout">
                 <div class="login-buttons">
                     <button class="btn-primary">Pay</button>

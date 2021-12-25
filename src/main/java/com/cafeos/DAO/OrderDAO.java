@@ -17,7 +17,7 @@ public class OrderDAO
 		try
 		{
 			Connection con = ConHandler.getConnection();
-			PreparedStatement pst = con.prepareStatement("INSERT INTO order(userId, orderNames, totalPrice, date, isCompleted) values(?,?,?,?,?);");
+			PreparedStatement pst = con.prepareStatement("INSERT INTO `order` (userId, orderNames, totalPrice, date, isCompleted) values(?,?,?,?,?);");
 			
 			pst.setInt(1, o.getUserId());
 			pst.setString(2, o.getOrderNames());
