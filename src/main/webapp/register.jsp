@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +14,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 
     <!-- ======== TITLE ======== -->
-    <title>Java Beans - Login</title>
+    <title>Java Beans - Register</title>
 </head>
 <body>
     <!-- ======== HEADER ======== -->
@@ -29,29 +31,41 @@
                 <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
                 <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
-                <li class="nav-item"><a href="register.html" class=" btn-primary">Register</a></li>
+                <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+                <li class="nav-item"><a href="#" class=" btn-primary">Register</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- ======== LOGIN SECTION ======== -->
+    <!-- ======== REGISTER SECTION ======== -->
     <section class="login-section section">
         <div class="login-container container">
-            <form class="login-form" action="login" method="POST">
-                <h1 class="login-title">Login</h1>
+            <form class="login-form" action="register" method="POST">
+                <h1 class="login-title">Register</h1>
+                <div class="login-input">
+                    <p>First Name:</p>
+                    <input id="login-name" required type="text" placeholder="First Name" name="firstname">
+                </div>
+                <div class="login-input">
+                    <p>Last Name:</p>
+                    <input id="login-name" required type="text" placeholder="Last Name" name="lastname">
+                </div>
                 <div class="login-input">
                     <p>Email:</p>
-                    <input id="login-name" required type="text" placeholder="Email" name="username" required="required">
+                    <input id="login-name" required type="email" placeholder="Email" name="email">
                 </div>
+<!--                 <div class="login-input">
+                    <p>Username:</p>
+                    <input id="login-name" required type="text" placeholder="Name" name="username">
+                </div> -->
                 <div class="login-input">
                     <p>Password:</p>
-                    <input id="login-password" required type="password" placeholder="Password" name="password" required="required">
+                    <input id="login-password" required type="password" placeholder="Password" name="password">
                 </div>
                 <div class="login-buttons">
-                    <button class="btn-primary" type="submit">Login</button>
+                    <button class="btn-primary" type="submit">Register</button>
                 </div>
-                <p>Don't have an account yet? <span><a class="login-link" href="register.html">Register here.</a></span></p>
+                <p>Already have an account? <span><a class="login-link" href="login.jsp">Login here.</a></span></p>
             </form>
         </div>
     </section>
