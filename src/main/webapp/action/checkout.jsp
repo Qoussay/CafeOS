@@ -46,7 +46,7 @@
             <div class="checkout-list">
                 <!-- Add for each here -->
                 
-                <%  //get the counter which is the number of order added to cart
+                <% 	//get the counter which is the number of order added to cart
                 	int counter = AddToCart.getCounter();
                 	//get the array that has order names but in a string format
                 	String order_name_str = AddToCart.getOrderNameArray();
@@ -71,15 +71,16 @@
                 
                 <%} %>
             </div>
-            <form class="checkout-form" action="">
+            <form class="checkout-form" action="/CafeOS/menu" method="post">
         		<div class="checkout-item total-price-field">
                     <h2 class="checkout-name ">Total Price</h2>
                     <h3 class="checkout-price">RM <% out.print(total_price);%></h3>
                 </div>
                 <div class="checkout-input">
                     <p>Table Number:</p>
-                    <input required placeholder="No." type="number" name="tableNumber">
+                    <input  placeholder="No." type="number" name="tableNumber">
                 </div>
+                <input type="hidden" name="request" value="checkout">
                 <div class="login-buttons">
                     <button class="btn-primary">Pay</button>
                 </div>

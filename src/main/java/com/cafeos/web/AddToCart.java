@@ -38,20 +38,36 @@ public class AddToCart  extends jakarta.servlet.http.HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String item_name = request.getParameter("item_name");
-		String item_price = request.getParameter("item_price");
 		
-		order_name[counter] = item_name;
-		order_price[counter] = item_price;
-		
-		counter ++;
-		total_price += Float.parseFloat(item_price);
-		
-		for (int i = 0; i < 10; i++) {
-			  System.out.println("item " + i + ": " + order_name[i] + "/" + order_price[i]);
+		if (request.getParameter("request").equals("addItem")) {
+			String item_name = request.getParameter("item_name");
+			String item_price = request.getParameter("item_price");
+			
+			order_name[counter] = item_name;
+			order_price[counter] = item_price;
+			
+			counter ++;
+			total_price += Float.parseFloat(item_price);
+			
+			for (int i = 0; i < 10; i++) {
+				  System.out.println("item " + i + ": " + order_name[i] + "/" + order_price[i]);
+			}
+			
+			response.sendRedirect("menu.html");
 		}
-		
-		response.sendRedirect("menu.html");
+		else {
+			String order_name_str = Arrays.toString(order_name);
+			order_name_str = order_name_str.replace(", null", "");
+			System.out.println(order_name_str);
+			
+			//reset variables
+			order_name = new String[10];
+			order_price = new String[10];
+			counter=0;
+			total_price = 0f;
+			
+			response.sendRedirect("index.html");
+		}
 	}
 	
 	
