@@ -16,7 +16,7 @@
 		
 		<%
 			List<Order> list= null;
-			String dateFilter = "No Date";
+			String dateFilter = "All Time";
 			int statusFilter = 2;
 			
 			if (request.getParameter("dateFilter") != "")
@@ -27,13 +27,17 @@
 			
 			System.out.println(dateFilter + "/" + statusFilter);
 			
-			if (dateFilter == "No Date" || dateFilter == null)
+			if (dateFilter == "All Time" || dateFilter == null)
+			{
 				list = OrderDAO.getAllOrder();
+				dateFilter = "All Time";
+			}
 			else
 				list = OrderDAO.getOrderByDate(dateFilter);
 			
 			List<Order> filtered_list = OrderDAO.filterOrderByStatus(list, (short) statusFilter);
 			
+			request.setAttribute("dateFilterValue", dateFilter);
 			request.setAttribute("statusFilterValue", statusFilter);
 			request.setAttribute("list", filtered_list);
 		%>
@@ -48,9 +52,9 @@
 		</div>
 
 		<div style="margin-top: 20px;">		
-			
+
 			<form action="orderlist.jsp" method="post">
-				<p>Filter by Date: <input type="date" name="dateFilter"/></p>
+				<p>Filter by Date: <input type="date" name="dateFilter"/> <i>(Leave empty for "All Time")</i></p>
 				<p>
 					Filter by Status:
 					<input type="radio" name="statusFilter" value="0" <c:if test="${statusFilterValue == 0}">checked</c:if> />Active Only
@@ -63,8 +67,8 @@
 		</div>
 		
 		<c:choose>
-			<c:when test="${list.isEmpty()}">
-				<p><strong>Cannot find orders!</strong></p>
+			<c:when test="${list.isEmpty()}">	
+				<hr/><p><strong>No orders found on date: <c:out value="${dateFilterValue}"></c:out> with current status filter!</strong></p>
 				<p>Click <a href="orderlist.jsp">here</a> to refresh.</p>
 			</c:when>
 			<c:otherwise>
