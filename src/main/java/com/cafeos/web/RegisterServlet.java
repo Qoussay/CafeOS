@@ -55,10 +55,10 @@ public class RegisterServlet extends HttpServlet {
 		 * response.sendRedirect("login.html"); }
 		 */
 		if (UserDAO.save(user)==0) {
-			response.sendRedirect("login.html"); //already exist email, send another palace
+			response.sendRedirect("login.jsp"); //already exist email, send another palace
 		}
 		else {
-			response.sendRedirect("index.html");
+			response.sendRedirect("index.jsp");
 		}
 	}
 

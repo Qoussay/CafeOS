@@ -9,6 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginServlet
@@ -37,6 +38,7 @@ public class LoginServlet extends jakarta.servlet.http.HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		String errorLogin = "false";
 		
 		User user = new User();
 		user.setEmail(username);
@@ -46,10 +48,14 @@ public class LoginServlet extends jakarta.servlet.http.HttpServlet {
 		
 		//check if true
 		if (userDao.validate(user)) {
-			response.sendRedirect("index.html");
+			HttpSession session = request.getSession();
+			session.setAttribute("username", username);
+			response.sendRedirect("index.jsp");
 		}
 		else {
-			response.sendRedirect("login.html");
+			request.setAttribute("errorLogin", errorLogin);
+			//response.sendRedirect("login.jsp");
+			getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
 		}
 		
 	}
