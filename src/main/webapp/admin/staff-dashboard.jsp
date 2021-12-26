@@ -11,8 +11,21 @@
 		</style>
 	</head>
 	<body>
-		<%@ page import="com.cafeos.DAO.OrderDAO, com.cafeos.bean.Order, java.util.*, java.io.*" %>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+		<%@ page import="com.cafeos.DAO.OrderDAO, com.cafeos.bean.Order, 
+						 com.cafeos.DAO.UserDAO, com.cafeos.bean.User,
+						 java.util.*, java.io.*" %>
+		
+		<%
+			/* USER AUTHENTICATION */
+			int uid = Integer.parseInt(session.getAttribute("userId").toString());
+			User user = UserDAO.getById(uid);
+			
+			System.out.println(user);
+
+			if (user.getIsAdmin() != 1)
+				response.sendRedirect("access-denied.jsp");
+		%>
 		
 		<%
 			// Auto Refresh Every 30 seconds
@@ -91,7 +104,7 @@
 		<p>
 			<strong>Session Information:</strong><br/>
 			Session ID: <c:out value="${pageContext.session.id}"/><br/>
-			Logged in user: <c:out value="${sessionScope.username}"/>
+			Logged in User: <c:out value="${sessionScope.username}"/> | ID: <c:out value="${sessionScope.userId}"/>
 		</p>
 	</body>
 </html>

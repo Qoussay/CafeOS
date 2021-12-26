@@ -55,7 +55,7 @@ public class LoginServlet extends jakarta.servlet.http.HttpServlet {
 			if(user.getIsAdmin()==0) {
 				response.sendRedirect("index.jsp");
 			}else {
-				response.sendRedirect("staff-dashboard.jsp");
+				response.sendRedirect("admin/staff-dashboard.jsp");
 			}
 			
 		}

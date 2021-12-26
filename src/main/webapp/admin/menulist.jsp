@@ -11,8 +11,21 @@
 		</style>
 	</head>
 	<body>
-		<%@ page import="com.cafeos.DAO.MenuDAO, com.cafeos.bean.Menu, java.util.*" %>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+		<%@ page import="com.cafeos.DAO.MenuDAO, com.cafeos.bean.Menu, 
+						 com.cafeos.DAO.UserDAO, com.cafeos.bean.User,
+						 java.util.*" %>
+		
+		<%
+			/* USER AUTHENTICATION */
+			int uid = Integer.parseInt(session.getAttribute("userId").toString());
+			User user = UserDAO.getById(uid);
+			
+			System.out.println(user);
+
+			if (user.getIsAdmin() != 1)
+				response.sendRedirect("access-denied.jsp");
+		%>
 		
 		<%
 			List<Menu> list = MenuDAO.getAllMenu();
@@ -51,5 +64,12 @@
 				</tr>
 			</c:forEach>
 		</table>
+		
+		<br/><hr/>
+		<p>
+			<strong>Session Information:</strong><br/>
+			Session ID: <c:out value="${pageContext.session.id}"/><br/>
+			Logged in User: <c:out value="${sessionScope.username}"/> | ID: <c:out value="${sessionScope.userId}"/>
+		</p>
 	</body>
 </html>
