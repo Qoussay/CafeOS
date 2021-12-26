@@ -129,7 +129,7 @@ public class OrderDAO
 		try
 		{
 			Connection con = ConHandler.getConnection();
-			PreparedStatement pst = con.prepareStatement("SELECT * FROM `order` WHERE userId=?;");
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM `order` WHERE userId=? ORDER BY date DESC;");
 			
 			pst.setInt(1, id);
 			

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.cafeos.DAO.UserDAO;
 import com.cafeos.bean.User;
+import com.cafeos.bean.Cart;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -48,11 +49,13 @@ public class LoginServlet extends jakarta.servlet.http.HttpServlet {
 		
 		//check if true
 		if (userDao.validate(user)) {
+			Cart cart = new Cart();
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
 			session.setAttribute("fName", user.getfName());
 			session.setAttribute("userId", user.getUserId());
+			session.setAttribute("cart", cart);
 			if(user.getIsAdmin()==0) {
 				response.sendRedirect("index.jsp");
 			} else {

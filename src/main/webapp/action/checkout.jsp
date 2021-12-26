@@ -20,7 +20,7 @@
     <!-- ======== HEADER ======== -->
      <%@include file="../components/navbar.jsp" %>
 
-	<%@page import="com.cafeos.web.AddToCart , java.util.*" %>
+	<%@page import="com.cafeos.web.AddToCart, com.cafeos.bean.Cart, java.util.*" %>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
     <!-- CHECKOUT SECTION -->
@@ -34,19 +34,24 @@
 	                if (session.getAttribute("username") == null)
 						response.sendRedirect("/CafeOS/login.jsp");
                 		
-                	int counter = AddToCart.getCounter();
+               		// Cart cart = (Cart) session.getAttribute("cart");
+                		
+               		if (cart == null)
+               			return;
+                		
+                	int counter = cart.counter;
                 	//get the array that has order names but in a string format
-                	String order_name_str = AddToCart.getOrderNameArray();
+                	String order_name_str = cart.getOrderNameArray();
                 	order_name_str = order_name_str.substring(1, order_name_str.length()-1);
                 	//change it back to array format 
                 	String[] order_name = order_name_str.split(",");
                 	//do same thing for order price array
-                	String order_price_str = AddToCart.getOrderPriceArray();
+                	String order_price_str = cart.getOrderPriceArray();
                 	order_price_str = order_price_str.substring(1, order_price_str.length()-1);
                 	String[] order_price = order_price_str.split(",");
                 	
                 	//total price float
-                	float total_price = AddToCart.getTotalPrice();
+                	float total_price = cart.getTotalPrice();
                 	
                 	for (int i=0; i<counter; i++) {
                 %>

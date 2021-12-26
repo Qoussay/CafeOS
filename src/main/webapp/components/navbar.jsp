@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-    <%@page import="com.cafeos.web.AddToCart, java.util.*" %>
+    <%@page import="com.cafeos.bean.Cart, java.util.*" %>
+    <% Cart cart = (Cart) session.getAttribute("cart"); %>
     
 	<header class="header">
 		<h2 class="header-logo">
@@ -29,7 +30,7 @@
 				<li class="nav-item">
 					<a href="/CafeOS/action/checkout.jsp" class=" btn-primary">
 					<i class="fas fa-shopping-cart"></i>
-					 <% int count = AddToCart.getCounter(); %>
+					 <% int count = cart.counter; %>
 					 <% out.print(count);%>
 					 Cart
 					 </a>

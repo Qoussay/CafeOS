@@ -105,7 +105,10 @@
 							<td>${item.getOrderNames()}</td>
 							<td>${item.getTotalPrice()}</td>
 							<td>${item.getDate()}</td>
-							<td>${item.getIsCompleted()}</td>
+							<td>
+								<c:if test="${item.getIsCompleted() == 0}">No</c:if>
+								<c:if test="${item.getIsCompleted() == 1}">Yes</c:if>
+							</td>
 						</tr>
 					</c:forEach>
 				</table>
