@@ -27,6 +27,12 @@
     <section class="checkout-section section">
         <div class="checkout-container container">
             <h1 class="checkout-title">Checkout</h1>
+            <form action="/CafeOS/menu" method="post">
+            	<input type="hidden" name="request" value="clearCart">
+                <div class="login-buttons">
+                    <button class="btn-primary">Clear Cart</button>
+                </div>
+            </form>
             <div class="checkout-list">
                 <!-- Add for each here -->
                 
