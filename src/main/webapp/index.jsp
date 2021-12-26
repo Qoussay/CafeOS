@@ -29,22 +29,15 @@
 
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
+                <li class="nav-item"><a href="menu.jsp" class="nav-link">Menu</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                <%
-                if (session.getAttribute("username") == null) {
-                %>
-                <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
-                <li class="nav-item"><a href="register.html" class=" btn-primary">Register</a></li>
-                <%
-                }
-                else{
-                %>
-                <li class="nav-item"><a href="login.html" class="nav-link">Logout</a></li>
-                <li class="nav-item"><a href="register.html" class=" btn-primary">Order</a></li>
-                <%
-                }
-                %>
+                <% if (session.getAttribute("username") == null) { %>
+                <li class="nav-item"><a href="login.jsp" class="nav-link">Login</a></li>
+                <li class="nav-item"><a href="register.jsp" class=" btn-primary">Register</a></li>
+                <% } else { %>
+                <li class="nav-item"><a href="login.jsp" class="nav-link">Logout</a></li>
+                <li class="nav-item"><a href="menu.jsp" class=" btn-primary">Order</a></li>
+                <% } %>
             </ul>
         </nav>
     </header>
@@ -59,8 +52,8 @@
                     Order your invigorating coffee now and have it served hot today.
                 </p>
                 <div class="hero-buttons">
-                    <a href="menu.html" class="btn-primary">Order</a>
-                    <a href="menu.html" class="btn">Menu</a>
+                    <a href="menu.jsp" class="btn-primary">Order Now</a>
+                    <!-- <a href="menu.html" class="btn">Menu</a> -->
                 </div>
             </div>
         </div>
@@ -268,7 +261,7 @@
                     </p>
                     <h2 class="featured-cost">RM 8.50</h2>
                     <div class="featured-buttons">
-                        <a href="menu.html" class="btn-primary">Full Menu</a>
+                        <a href="menu.jsp" class="btn-primary">Full Menu</a>
                     </div>
                 </div>
                 <div class="featured-circle">
