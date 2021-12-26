@@ -36,11 +36,6 @@
 						int uid = Integer.parseInt(session.getAttribute("userId").toString());
 						User user = UserDAO.getById(uid);
 
-						System.out.println(user);
-
-						if (user.getIsAdmin() != 0)
-							response.sendRedirect("access-denied.jsp");
-						
 						/* GET ORDER BY USER ID */
 						List<Order> order_history = OrderDAO.getByUserId(uid);
 						request.setAttribute("order_history", order_history);
