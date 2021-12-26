@@ -48,9 +48,16 @@ public class LoginServlet extends jakarta.servlet.http.HttpServlet {
 		
 		//check if true
 		if (userDao.validate(user)) {
+			
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
-			response.sendRedirect("index.jsp");
+			session.setAttribute("userId", user.getUserId());
+			if(user.getIsAdmin()==0) {
+				response.sendRedirect("index.jsp");
+			}else {
+				response.sendRedirect("staff-dashboard.jsp");
+			}
+			
 		}
 		else {
 			request.setAttribute("errorLogin", errorLogin);
