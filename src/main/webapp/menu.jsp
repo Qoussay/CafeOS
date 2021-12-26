@@ -155,11 +155,11 @@
         	</div>
         </div>
         
-            <!-- Drinks -->
+            <!-- Drinks
             <h2 class="menu-heading">Drinks</h2>
             <div class="menu-grid">
             
-            <!-- FORM USED FOR ADDING ITEM INFORMATION TO THE ARRAY -->
+            <!-- FORM USED FOR ADDING ITEM INFORMATION TO THE ARRAY 
                 <div class="menu-item">
                 
                     <img src="./assets/img/coffee-menu-1-removebg-preview.png" alt="">
@@ -222,7 +222,7 @@
                 </div>
             </div>
 
-            <!-- Food -->
+            <!-- Food 
             <h2 class="menu-heading">Food</h2>
             <div class="menu-grid">
                 <div class="menu-item">
@@ -270,6 +270,7 @@
                     </form>
                 </div>
             </div>
+            -->
         </div>
     </section>
     
