@@ -122,6 +122,38 @@ public class OrderDAO
 		return o;
 	}
 	
+	public static List<Order> getByUserId(int id)
+	{
+		List<Order> list = new ArrayList<Order>();
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM `order` WHERE userId=?;");
+			
+			pst.setInt(1, id);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			while (rs.next())
+			{
+				Order o = new Order();
+				
+				o.setOrderId(rs.getInt("orderId"));
+				o.setUserId(rs.getInt("userId"));
+				o.setOrderNames(rs.getString("orderNames"));
+				o.setTotalPrice(rs.getFloat("totalPrice"));
+				o.setDate(rs.getString("date"));
+				o.setIsCompleted((short)rs.getInt("isCompleted"));
+				
+				list.add(o);
+			}
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return list;
+	}
+	
 	public static int completeOrder(int id)
 	{
 		int status = 0;
