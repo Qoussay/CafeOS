@@ -51,7 +51,7 @@
             <div class="checkout-list">
 				<%
 					if (session.getAttribute("username") == null)
-						response.sendRedirect("access-denied.jsp");
+						response.sendRedirect("login.jsp");
 					else{
 						/* USER AUTHENTICATION */
 						int uid = Integer.parseInt(session.getAttribute("userId").toString());
