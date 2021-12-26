@@ -127,4 +127,8 @@ if(contactSubmit){
     })
 }
 
+/* ======== TIPSY PROJECTS ======== */
+tippy('.menu-item-button', {
+    content: 'Add to cart',
+});
 
