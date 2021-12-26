@@ -31,6 +31,9 @@
                 <!-- Add for each here -->
                 
                 <% 	//get the counter which is the number of order added to cart
+	                if (session.getAttribute("username") == null)
+						response.sendRedirect("/CafeOS/login.jsp");
+                		
                 	int counter = AddToCart.getCounter();
                 	//get the array that has order names but in a string format
                 	String order_name_str = AddToCart.getOrderNameArray();
