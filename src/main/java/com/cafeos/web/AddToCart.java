@@ -57,7 +57,7 @@ public class AddToCart  extends jakarta.servlet.http.HttpServlet {
 				  System.out.println("item " + i + ": " + order_name[i] + "/" + order_price[i]);
 			}
 			
-			response.sendRedirect("menu.html");
+			response.sendRedirect("menu.jsp");
 		}
 		else {
 			String order_name_str = Arrays.toString(order_name);
@@ -85,10 +85,10 @@ public class AddToCart  extends jakarta.servlet.http.HttpServlet {
 			total_price = 0f;
 			
 			if(OrderDAO.save(order)==0) {
-				response.sendRedirect("index.html");
+				response.sendRedirect("index.jsp");
 			}
 			else {
-				response.sendRedirect("index.html");
+				response.sendRedirect("index.jsp");
 			}
 		}
 	}
