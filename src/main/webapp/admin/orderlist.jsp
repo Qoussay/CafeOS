@@ -97,6 +97,7 @@
 						<th>Total Price</th>
 						<th>Date</th>
 						<th>Completed?</th>
+						<th>Action</th>
 					</tr>
 					<c:forEach items="${list}" var="item">
 						<tr>
@@ -108,6 +109,14 @@
 							<td>
 								<c:if test="${item.getIsCompleted() == 0}">No</c:if>
 								<c:if test="${item.getIsCompleted() == 1}">Yes</c:if>
+							</td>
+							<td>
+								<c:if test="${item.getIsCompleted() == 0}">
+									<input type="button" onclick="location.href='../action/alter_order.jsp?orderId=${item.getOrderId()}&do=complete';" value="Complete Order" />
+								</c:if>
+								<c:if test="${item.getIsCompleted() == 1}">
+									<input type="button" onclick="location.href='../action/alter_order.jsp?orderId=${item.getOrderId()}&do=undo';" value="Undo Complete Order" />
+								</c:if>
 							</td>
 						</tr>
 					</c:forEach>
