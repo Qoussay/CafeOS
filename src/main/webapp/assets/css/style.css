@@ -111,10 +111,10 @@ a, a:hover, a:focus, a:visited, a:active{
 	color: var(--brown-color-6) !important;
 	cursor: pointer;
 	font-size: 1rem;
+	transition: .3s;
 }
 
 .menu-item-button:hover {
-	font-size: 1.1rem;
 	color: var(--brown-color-4) !important;
 }
 

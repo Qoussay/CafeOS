@@ -130,128 +130,16 @@
 				</div>
 			</div>
 		</div>
-            <!-- Drinks
-            <h2 class="menu-heading">Drinks</h2>
-            <div class="menu-grid">
-            
-            <!-- FORM USED FOR ADDING ITEM INFORMATION TO THE ARRAY 
-                <div class="menu-item">
-                
-                    <img src="./assets/img/coffee-menu-1-removebg-preview.png" alt="">
-                    <h3 class="menu-title">Java Express</h3>
-                    <p class="menu-description">Lorem ipsum dolor sit amet.</p>
-                    <p class="menu-price">RM 6.90</p>
-	                    
-	                <form action="menu" method="post">
-                    	<input type="hidden" name="item_name" value="Java Express">
-                    	<input type="hidden" name="item_price" value="6.90">
-	                    	<input type="hidden" name="request" value="addItem">
-	                    <button type="submit" class="btn-primary">Add To Cart</button>
-                    </form>
-                </div>
-               
-
-                <div class="menu-item">
-                
-                    <img src="./assets/img/latte-removebg-preview.png" alt="">
-                    <h3 class="menu-title">Midnight Frappuccino</h3>
-                    <p class="menu-description">Lorem ipsum dolor sit amet.</p>
-                    <p class="menu-price">RM 8.50</p>
-	                    
-	                <form action="menu" method="post">
-                    	<input type="hidden" name="item_name" value="Midnight Frappuccino">
-                    	<input type="hidden" name="item_price" value="8.50">
-	                    	<input type="hidden" name="request" value="addItem">
-	                    <button type="submit" class="btn-primary">Add To Cart</button>
-                    </form>
-                </div>
-
-                <div class="menu-item">
-                
-                    <img src="./assets/img/lattebeans.png" alt="">
-                    <h3 class="menu-title">Bean Delight</h3>
-                    <p class="menu-description">Lorem ipsum dolor sit amet.</p>
-                    <p class="menu-price">RM 7.90</p>
-	                    
-                	<form action="menu" method="post">
-                    	<input type="hidden" name="item_name" value="Bean Delight">
-                    	<input type="hidden" name="item_price" value="7.90">
-	                    	<input type="hidden" name="request" value="addItem">
-	                    <button type="submit" class="btn-primary">Add To Cart</button>
-                    </form>
-                </div>
-
-                <div class="menu-item">
-                
-                    <img src="./assets/img/icebeans-removebg-preview.png" alt="">
-                    <h3 class="menu-title">Iced Bean Delight</h3>
-                    <p class="menu-description">Lorem ipsum dolor sit amet.</p>
-                    <p class="menu-price">RM 8.90</p>
-                    
-	                <form action="menu" method="post">
-                    	<input type="hidden" name="item_name" value="Icead Bean Delight">
-                    	<input type="hidden" name="item_price" value="8.90">
-	                    	<input type="hidden" name="request" value="addItem">
-	                    <button type="submit" class="btn-primary">Add To Cart</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Food 
-            <h2 class="menu-heading">Food</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                
-                    <img src="./assets/img/brownies-removebg-preview.png" alt="">
-                    <h3 class="menu-title">Bean Brownies</h3>
-                    <p class="menu-description">Lorem ipsum dolor sit amet.</p>
-                    <p class="menu-price">RM 13.90</p>
-                    
-                    <form action="menu" method="post">
-                    	<input type="hidden" name="item_name" value="Bean Brownies">
-                    	<input type="hidden" name="item_price" value="13.90">
-	                    	<input type="hidden" name="request" value="addItem">
-	                    <button type="submit" class="btn-primary">Add To Cart</button>
-                    </form>
-                </div>
-
-                <div class="menu-item">
-                	
-	                    <img src="./assets/img/cheeseburger.png" alt="">
-	                    <h3 class="menu-title">Signature Burger</h3>
-	                    <p class="menu-description">Lorem ipsum dolor sit amet.</p>
-	                    <p class="menu-price">RM 14.50</p>
-	                    
-                    <form action="menu" method="post">
-                    	<input type="hidden" name="item_name" value="Signature Burger">
-                    	<input type="hidden" name="item_price" value="14.50">
-	                    	<input type="hidden" name="request" value="addItem">
-	                    <button type="submit" class="btn-primary">Add To Cart</button>
-                    </form>
-                </div>
-
-                <div class="menu-item">
-                	
-                   	<img src="./assets/img/crossianttrans.png" alt="">
-                    <h3 class="menu-title">Crossiant Express</h3>
-                    <p class="menu-description">Lorem ipsum dolor sit amet.</p>
-                    <p class="menu-price">RM 2.90</p>
-                    
-					<form action="menu" method="post">
-	                   	<input type="hidden" name="item_name" value="Croissant Express">
-	                    <input type="hidden" name="item_price" value="2.90">
-	                    	<input type="hidden" name="request" value="addItem">
-	                    <button type="submit" class="btn-primary">Add To Cart</button>
-                    </form>
-                </div>
-            </div>
-            -->
     </section>
     
     <!-- ======== FOOTER SECTION ======== -->
     <footer class="footer">
         JAVA BEANS COPYRIGHT
     </footer>
+    
+    <!-- ======== TOOLTIPS JS ======== -->
+    <script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6.3.3/dist/tippy-bundle.umd.min.js"></script>
     
     <!-- ======== MAIN JS ======== -->
     <script src="./assets/js/main.js"></script>
