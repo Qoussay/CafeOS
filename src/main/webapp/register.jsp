@@ -27,26 +27,22 @@
                 <h1 class="login-title">Register</h1>
                 <div class="login-input">
                     <p>First Name:</p>
-                    <input id="login-name" required type="text" placeholder="First Name" name="firstname">
+                    <input id="register-name" required type="text" placeholder="First Name" name="firstname">
                 </div>
                 <div class="login-input">
                     <p>Last Name:</p>
-                    <input id="login-name" required type="text" placeholder="Last Name" name="lastname">
+                    <input id="register-last" required type="text" placeholder="Last Name" name="lastname">
                 </div>
                 <div class="login-input">
                     <p>Email:</p>
-                    <input id="login-name" required type="email" placeholder="Email" name="email">
+                    <input id="register-email" required type="email" placeholder="Email" name="email">
                 </div>
-<!--                 <div class="login-input">
-                    <p>Username:</p>
-                    <input id="login-name" required type="text" placeholder="Name" name="username">
-                </div> -->
                 <div class="login-input">
                     <p>Password:</p>
-                    <input id="login-password" required type="password" placeholder="Password" name="password">
+                    <input id="register-password" required type="password" placeholder="Password" name="password">
                 </div>
                 <div class="login-buttons">
-                    <button class="btn-primary" type="submit">Register</button>
+                    <button id="register-submit" class="btn-primary" type="submit">Register</button>
                 </div>
                 <p>Already have an account? <span><a class="login-link" href="login.jsp">Login here.</a></span></p>
             </form>

@@ -61,7 +61,9 @@
                     <h3 class="checkout-price">RM <% out.print(order_price[i]); %></h3>
                 </div>
                 
-                <%} %>
+                <%} 
+                request.setAttribute("counter", counter);
+                %>
             </div>
             <form class="checkout-form" action="/CafeOS/menu" method="post">
         		<div class="checkout-item total-price-field">
@@ -76,8 +78,13 @@
                  -->
                 <input type="hidden" name="request" value="checkout">
                 <div class="login-buttons">
-                    <button class="btn-primary">Pay</button>
-                </div>
+					<c:if test="${counter == 0}" var="condition">
+						<span class="promise-icon">Order an item to pay...</span>
+					</c:if>
+					<c:if test="${counter > 0}">
+						<button class="btn-primary">Pay</button>
+					</c:if>
+				</div>
             </form>
         </div>
     </section>

@@ -18,7 +18,7 @@
 </head>
 <body>
     <!-- ======== HEADER ======== -->
-     <%@include file="./components/navbar.jsp" %>
+    <%@include file="./components/navbar.jsp" %>
 
 	<%@page import="com.cafeos.bean.User, com.cafeos.bean.Order, com.cafeos.DAO.UserDAO, com.cafeos.DAO.OrderDAO, java.util.*" %>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
