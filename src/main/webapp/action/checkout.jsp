@@ -23,6 +23,31 @@
 	<%@page import="com.cafeos.web.AddToCart, com.cafeos.bean.Cart, java.util.*" %>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
+	<%
+		if (session.getAttribute("username") == null)
+			response.sendRedirect("/CafeOS/login.jsp");
+			
+			// Cart cart = (Cart) session.getAttribute("cart");
+			
+			if (cart == null)
+				return;
+			
+		int counter = cart.counter;
+		//get the array that has order names but in a string format
+		String order_name_str = cart.getOrderNameArray();
+		order_name_str = order_name_str.substring(1, order_name_str.length()-1);
+		//change it back to array format 
+		String[] order_name = order_name_str.split(",");
+		//do same thing for order price array
+		String order_price_str = cart.getOrderPriceArray();
+		order_price_str = order_price_str.substring(1, order_price_str.length()-1);
+		String[] order_price = order_price_str.split(",");
+		
+		//total price float
+		float total_price = cart.getTotalPrice();
+		request.setAttribute("counter", counter);
+	%>
+	
     <!-- CHECKOUT SECTION -->
     <section class="checkout-section section">
         <div class="checkout-container container">
@@ -30,34 +55,16 @@
             <form action="/CafeOS/menu" method="post">
             	<input type="hidden" name="request" value="clearCart">
                 <div class="login-buttons">
-                    <button class="btn-primary">Clear Cart</button>
+					<c:if test="${counter > 0}">
+						<button class="btn-primary"><i class="far fa-trash-alt"></i> Clear Cart</button>
+					</c:if>
                 </div>
             </form>
             <div class="checkout-list">
                 <!-- Add for each here -->
                 
                 <% 	//get the counter which is the number of order added to cart
-	                if (session.getAttribute("username") == null)
-						response.sendRedirect("/CafeOS/login.jsp");
-                		
-               		// Cart cart = (Cart) session.getAttribute("cart");
-                		
-               		if (cart == null)
-               			return;
-                		
-                	int counter = cart.counter;
-                	//get the array that has order names but in a string format
-                	String order_name_str = cart.getOrderNameArray();
-                	order_name_str = order_name_str.substring(1, order_name_str.length()-1);
-                	//change it back to array format 
-                	String[] order_name = order_name_str.split(",");
-                	//do same thing for order price array
-                	String order_price_str = cart.getOrderPriceArray();
-                	order_price_str = order_price_str.substring(1, order_price_str.length()-1);
-                	String[] order_price = order_price_str.split(",");
-                	
-                	//total price float
-                	float total_price = cart.getTotalPrice();
+	                
                 	
                 	for (int i=0; i<counter; i++) {
                 %>
@@ -68,7 +75,7 @@
                 </div>
                 
                 <%} 
-                request.setAttribute("counter", counter);
+                
                 %>
             </div>
             <form class="checkout-form" action="/CafeOS/menu" method="post">
