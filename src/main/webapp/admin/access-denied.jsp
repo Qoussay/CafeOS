@@ -15,7 +15,8 @@
 			<p>
 				You do not have access to the admin area!<br/>
 				If you are a staff member, please contact IT Team or Supervisor.<br/><br/>
-				<a href="../index.jsp">Return to Home</a>
+				<a href="../index.jsp">Return to Home</a> |
+				<a href="../login.jsp">Retry Login</a>
 			</p>
 			<br/><hr/><br/>
 			<p>
