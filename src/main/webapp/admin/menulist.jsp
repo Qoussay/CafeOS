@@ -18,7 +18,10 @@
 		
 		<%
 			/* USER AUTHENTICATION */
-			int uid = Integer.parseInt(session.getAttribute("userId").toString());
+			int uid = -1;
+			if (session.getAttribute("userId") != null)
+				uid = Integer.parseInt(session.getAttribute("userId").toString());
+			
 			User user = UserDAO.getById(uid);
 			
 			System.out.println(user);
@@ -39,6 +42,7 @@
 			<strong>Menu List</strong> &#9679;
 			<a href="userlist.jsp">User List</a> &#9679;
 			<a href="staff-dashboard.jsp">Return to Dashboard...</a>
+			<span style="float: right;">[ <a href="../logout">Logout</a> ]</span>
 		</div>		
 		
 		<p><input type="button" onclick="location.href='addmenu.jsp';" value="Add New Menu Item..." /></p>

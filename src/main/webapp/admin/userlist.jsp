@@ -16,7 +16,10 @@
 		
 		<%
 			/* USER AUTHENTICATION */
-			int uid = Integer.parseInt(session.getAttribute("userId").toString());
+			int uid = -1;
+			if (session.getAttribute("userId") != null)
+				uid = Integer.parseInt(session.getAttribute("userId").toString());
+			
 			User user = UserDAO.getById(uid);
 			
 			System.out.println(user);
@@ -36,7 +39,8 @@
 			<a href="orderlist.jsp">Order List</a> &#9679;
 			<a href="menulist.jsp">Menu List</a> &#9679;
 			<strong>User List</strong> &#9679;
-			<a href="staff-dashboard.jsp">Return to Dashboard...</a>	
+			<a href="staff-dashboard.jsp">Return to Dashboard...</a>
+			<span style="float: right;">[ <a href="../logout">Logout</a> ]</span>	
 		</div>	
 		
 		<table border="1" style="width: 100%; margin-top: 20px;">
