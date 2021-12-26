@@ -53,7 +53,7 @@ public class AddToCart  extends jakarta.servlet.http.HttpServlet {
 			cart.total_price += Float.parseFloat(item_price);
 			
 			session.setAttribute("cart", cart);
-			response.sendRedirect("action/checkout.jsp");
+			response.sendRedirect("menu.jsp");
 		}
 		else if (request.getParameter("request").equals("clearCart")) {
 			cart.reset();
