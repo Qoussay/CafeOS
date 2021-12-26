@@ -278,7 +278,7 @@
             <h1 class="contact-title">Contact Us</h1>
             <div class="contact-content">
                 <div class="contact-form">
-                    <form action="">
+                    <form action="https://formspree.io/f/mrgrwpwa" method="POST">
                         <div class="contact-input">
                             <p>Name:</p>
                             <input id="contact-name" required type="text" placeholder="Name" name="Name">
@@ -299,8 +299,8 @@
                             <textarea id="contact-message" required></textarea>
                             <span class="contact-error">Please write a valid message</span>
                         </div>
+                        <button id="contact-submit" type="submit" class="btn-primary">Submit</button>
                     </form>
-                    <button id="contact-submit" type="submit" class="btn-primary">Submit</button>
                 </div>
                 <div class="contact-image">
                     <img src="./assets/img/contact-cafe.jpg" alt="">
