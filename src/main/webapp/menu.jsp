@@ -19,28 +19,8 @@
 </head>
 <body>
     <!-- ======== HEADER ======== -->
-    <header class="header">
-        <h2 class="header-logo">
-            <a href="index.jsp">Java Beans</a>
-        </h2>
-        <i class="fas fa-bars header-toggle" id="header-toggle"></i>
-
-        <nav class="nav" id="nav">
-            <i class="fas fa-times nav-close" id="nav-close"></i>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="index.jsp#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Menu</a></li>
-                <li class="nav-item"><a href="index.jsp#contact" class="nav-link">Contact</a></li>
-                <% if (session.getAttribute("username") == null) { %>
-                <li class="nav-item"><a href="login.jsp" class="nav-link">Login</a></li>
-                <li class="nav-item"><a href="register.jsp" class=" btn-primary">Register</a></li>
-                <% } else { %>
-                <li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>
-                <li class="nav-item"><a href="action/checkout.jsp" class=" btn-primary"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-                <% } %>
-            </ul>
-        </nav>
-    </header>
+    <%@include file="./components/navbar.jsp" %>
+    
 
     <!-- FEATURES SECTION -->
     <div class="featured-section section" style="margin-top: var(--header-height);">
