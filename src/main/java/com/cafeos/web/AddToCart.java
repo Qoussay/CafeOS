@@ -14,6 +14,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class AddToCart  extends jakarta.servlet.http.HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -42,6 +43,13 @@ public class AddToCart  extends jakarta.servlet.http.HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Add login validation
+		HttpSession session = request.getSession();
+		if (session.getAttribute("username") == null) {
+			response.sendRedirect("/CafeOS/login.jsp");
+			return;
+		}
+			
 		
 		if (request.getParameter("request").equals("addItem")) {
 			String item_name = request.getParameter("item_name");
@@ -74,7 +82,7 @@ public class AddToCart  extends jakarta.servlet.http.HttpServlet {
 			order.setIsCompleted((short) 0);
 			order.setOrderNames(order_name_str);
 			order.setTotalPrice(total_price);
-			order.setUserId(1);
+			order.setUserId(Integer.parseInt(session.getAttribute("userId").toString()));
 			
 			OrderDAO orderDAO = new OrderDAO();
 			

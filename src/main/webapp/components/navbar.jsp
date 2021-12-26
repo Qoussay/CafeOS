@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    <%@page import="com.cafeos.web.AddToCart, java.util.*" %>
+    
 	<header class="header">
 		<h2 class="header-logo">
 			<a href="/CafeOS/index.jsp">Java Beans</a>
@@ -21,10 +24,16 @@
 					class=" btn-primary">Register</a></li>
 				<% } else { %>
 				<li class="nav-item"><a href="/CafeOS/order_history.jsp"
-					class="nav-link">History</a></li>
+					class="nav-link"><% out.print(session.getAttribute("fName"));%>'s History</a></li>
 				<li class="nav-item"><a href="/CafeOS/logout" class="nav-link">Logout</a></li>
-				<li class="nav-item"><a href="/CafeOS/action/checkout.jsp"
-					class=" btn-primary"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+				<li class="nav-item">
+					<a href="/CafeOS/action/checkout.jsp" class=" btn-primary">
+					<i class="fas fa-shopping-cart"></i>
+					 <% int count = AddToCart.getCounter(); %>
+					 <% out.print(count);%>
+					 Cart
+					 </a>
+				</li>
 				<% } %>
 			</ul>
 		</nav>

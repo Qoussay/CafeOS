@@ -115,6 +115,7 @@ a, a:hover, a:focus, a:visited, a:active{
 
 .menu-item-button:hover {
 	font-size: 1.1rem;
+	color: var(--brown-color-4) !important;
 }
 
 /* ======== REUSABLE CSS ======== */
@@ -742,6 +743,7 @@ a, a:hover, a:focus, a:visited, a:active{
     color: var(--brown-color-5);
     margin-bottom: 2rem;
     text-align: center;
+    width: 100%;
     font-family: var(--title-font);
     text-decoration: underline;
 }
@@ -749,22 +751,21 @@ a, a:hover, a:focus, a:visited, a:active{
 .menu-grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     width: 100%;
-    row-gap: 4rem;
+    column-gap: 4rem;
     margin-bottom: 2rem;
 }
 
 .menu-item{
-    width: 350px;
+    width: 100%;
     display: flex;
     padding: 2rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     gap: 1rem;
-    place-self: center;
 }
 
 .menu-price{
@@ -1110,8 +1111,7 @@ a, a:hover, a:focus, a:visited, a:active{
     }
 
     .menu-item{
-        max-width: 350px;
-        width: auto;
+        width: 100%;
         text-align: center;
     }
 

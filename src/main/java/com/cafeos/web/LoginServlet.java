@@ -51,6 +51,7 @@ public class LoginServlet extends jakarta.servlet.http.HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
+			session.setAttribute("fName", user.getfName());
 			session.setAttribute("userId", user.getUserId());
 			if(user.getIsAdmin()==0) {
 				response.sendRedirect("index.jsp");

@@ -73,67 +73,63 @@
     </div>
 
     <!-- ======== MENU SECTION ======== -->
-    
     <%@page import="com.cafeos.bean.Menu, com.cafeos.DAO.MenuDAO, java.util.*" %>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
     <section class="menu-section section">
         <div class="menu-container container">
-        
-        <div class="menu-grid">
-        	<div class="menu-col menu-left-col">
-        		<h2 class="menu-heading">Drinks</h2>
-        		
-        		<% List<Menu> drinkList=MenuDAO.getByCategoryId(2); 
-				request.setAttribute("drinkList",drinkList);
-				System.out.println(drinkList);
-				%>
-				
-				<c:forEach items="${drinkList}" var="d">
-					<div class="menu-grid">
-		        		<div class="menu-col">
-			        		<form action="menu" method="post">
-		                    	<input type="hidden" name="item_name" value="${d.getName()}">
-		                    	<input type="hidden" name="item_price" value="${d.getPrice()}">
-			                    <input type="hidden" name="request" value="addItem">
-			                    <button type="submit" class="menu-item-button">${d.getName()}</button>
-		        			</form>
-		        		</div>
-		        		<div class="menu-col">
-		        			<p>${d.getPrice()}</p>
-		        		</div>	
-	        		</div>
-				</c:forEach>
-        		
-        	</div>
-        	
-        	<div class="menu-col menu-right-col">
-        		<h2 class="menu-heading">Food</h2>
-        		
-        		<% List<Menu> foodList=MenuDAO.getByCategoryId(1); 
-				request.setAttribute("foodList",foodList);
-				System.out.println(foodList);
-				%>
-				
-				<c:forEach items="${foodList}" var="f">
-					<div class="menu-grid">
-		        		<div class="menu-col">
-		        			<form action="menu" method="post">
-		                    	<input type="hidden" name="item_name" value="${f.getName()}">
-		                    	<input type="hidden" name="item_price" value="${f.getPrice()}">
-			                    <input type="hidden" name="request" value="addItem">
-			                    <button type="submit" class="menu-item-button">${f.getName()}</button>
-		        			</form>
-		        		</div>
-		        		<div class="menu-col">
-		        			<p>${f.getPrice()}</p>
-		        		</div>	
-	        		</div>
-				</c:forEach>
-				
-        	</div>
-        </div>
-        
+			<div class="menu-grid">
+				<div class="menu-item">
+					<h2 class="menu-heading">Drinks</h2>
+
+					<%
+					List<Menu> drinkList = MenuDAO.getByCategoryId(2);
+					request.setAttribute("drinkList", drinkList);
+					%>
+
+					<c:forEach items="${drinkList}" var="d">
+						<div class="menu-grid">
+							<div class="menu-col">
+								<form action="menu" method="post">
+									<input type="hidden" name="item_name" value="${d.getName()}">
+									<input type="hidden" name="item_price" value="${d.getPrice()}">
+									<input type="hidden" name="request" value="addItem">
+									<button type="submit" class="menu-item-button">${d.getName()}</button>
+								</form>
+							</div>
+							<div class="menu-col">
+								<p>RM ${d.getPrice()}</p>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+
+				<div class="menu-item">
+					<h2 class="menu-heading">Food</h2>
+
+					<%
+					List<Menu> foodList = MenuDAO.getByCategoryId(1);
+					request.setAttribute("foodList", foodList);
+					%>
+
+					<c:forEach items="${foodList}" var="f">
+						<div class="menu-grid">
+							<div class="menu-col">
+								<form action="menu" method="post">
+									<input type="hidden" name="item_name" value="${f.getName()}">
+									<input type="hidden" name="item_price" value="${f.getPrice()}">
+									<input type="hidden" name="request" value="addItem">
+									<button type="submit" class="menu-item-button">${f.getName()}</button>
+								</form>
+							</div>
+							<div class="menu-col">
+								<p>RM ${f.getPrice()}</p>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
             <!-- Drinks
             <h2 class="menu-heading">Drinks</h2>
             <div class="menu-grid">
@@ -250,7 +246,6 @@
                 </div>
             </div>
             -->
-        </div>
     </section>
     
     <!-- ======== FOOTER SECTION ======== -->
