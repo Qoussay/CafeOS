@@ -151,6 +151,7 @@ public class UserDAO
 			ResultSet rs = pst.executeQuery();
 			status = rs.next();
 			u.setUserId(rs.getInt("userId"));
+			u.setfName(rs.getString("fName"));
 			u.setIsAdmin((short) rs.getInt("isAdmin"));
 			//System.out.println(u.getUserId());
 			//System.out.println(u.getIsAdmin());

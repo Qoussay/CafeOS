@@ -25,10 +25,10 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		
 		if (session != null) {
-			session.removeAttribute("username");
-			session.removeAttribute("userId");
+			session.invalidate();
 			
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
+			return;
 		}
 	}
 }

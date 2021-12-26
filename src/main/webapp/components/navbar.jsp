@@ -24,7 +24,7 @@
 					class=" btn-primary">Register</a></li>
 				<% } else { %>
 				<li class="nav-item"><a href="/CafeOS/order_history.jsp"
-					class="nav-link"><% out.print(session.getAttribute("username"));%>'s History</a></li>
+					class="nav-link"><% out.print(session.getAttribute("fName"));%>'s History</a></li>
 				<li class="nav-item"><a href="/CafeOS/logout" class="nav-link">Logout</a></li>
 				<li class="nav-item">
 					<a href="/CafeOS/action/checkout.jsp" class=" btn-primary">
