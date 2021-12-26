@@ -35,8 +35,8 @@
                 <li class="nav-item"><a href="login.jsp" class="nav-link">Login</a></li>
                 <li class="nav-item"><a href="register.jsp" class=" btn-primary">Register</a></li>
                 <% } else { %>
-                <li class="nav-item"><a href="login.jsp" class="nav-link">Logout</a></li>
-                <li class="nav-item"><a href="menu.jsp" class=" btn-primary">Order</a></li>
+                <li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>
+                <li class="nav-item"><a href="action/checkout.jsp" class=" btn-primary"><i class="fas fa-shopping-cart"></i> Cart</a></li>
                 <% } %>
             </ul>
         </nav>

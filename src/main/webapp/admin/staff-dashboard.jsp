@@ -18,7 +18,10 @@
 		
 		<%
 			/* USER AUTHENTICATION */
-			int uid = Integer.parseInt(session.getAttribute("userId").toString());
+			int uid = -1;
+			if (session.getAttribute("userId") != null)
+				uid = Integer.parseInt(session.getAttribute("userId").toString());
+			
 			User user = UserDAO.getById(uid);
 			
 			System.out.println(user);
@@ -53,9 +56,10 @@
 		
 		<h1>Pending Orders: <c:out value="${listLength}"></c:out></h1>
 		<p>
-		   	Last Refresh: <c:out value="${time}"></c:out> <i>(Refresh every 30 seconds)</i> || 
+		   	Last Refresh: <c:out value="${time}"></c:out> <i>(Auto refresh every 30 seconds)</i> || 
 		   	<input type="button" onclick="location.href='staff-dashboard.jsp';" value="Refresh" /> 
 		   	<input type="button" onclick="location.href='orderlist.jsp';" value="View All Orders (Admin View)" />
+		   	<span style="float: right;">[ <a href="../logout">Logout</a> ]</span>	
 		</p>
 		
 		<c:if test="${param.action != null}">
