@@ -129,6 +129,6 @@ if(contactSubmit){
 
 /* ======== TIPSY PROJECTS ======== */
 tippy('.menu-item-button', {
-    content: 'Add to cart',
+    content: 'Click to add to cart',
 });
 
