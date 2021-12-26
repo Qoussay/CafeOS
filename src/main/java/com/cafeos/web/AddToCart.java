@@ -55,7 +55,12 @@ public class AddToCart  extends jakarta.servlet.http.HttpServlet {
 			session.setAttribute("cart", cart);
 			response.sendRedirect("action/checkout.jsp");
 		}
-		else {
+		else if (request.getParameter("request").equals("clearCart")) {
+			cart.reset();
+			session.setAttribute("cart", cart);
+			response.sendRedirect("action/checkout.jsp");
+		}
+		else if (request.getParameter("request").equals("checkout")) {
 			String order_name_str = Arrays.toString(cart.order_name);
 			order_name_str = order_name_str.replace(", null", "");
 			System.out.println(order_name_str);
@@ -78,6 +83,10 @@ public class AddToCart  extends jakarta.servlet.http.HttpServlet {
 			cart.reset();
 			
 			session.setAttribute("cart", cart);
+			response.sendRedirect("index.jsp");
+		}
+		else
+		{
 			response.sendRedirect("index.jsp");
 		}
 	}
