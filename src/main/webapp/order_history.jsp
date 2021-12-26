@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/bae18c500b.js" crossorigin="anonymous"></script>
 
     <!-- ======== STYLE CSS ======== -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 
     <!-- ======== TITLE ======== -->
     <title>Java Beans - Order History</title>
@@ -27,15 +27,15 @@
         <nav class="nav" id="nav">
             <i class="fas fa-times nav-close" id="nav-close"></i>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="../index.jsp#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="../menu.jsp" class="nav-link">Menu</a></li>
-                <li class="nav-item"><a href="../index.jsp#contact" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="index.jsp#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="menu.jsp" class="nav-link">Menu</a></li>
+                <li class="nav-item"><a href="index.jsp#contact" class="nav-link">Contact</a></li>
                 <% if (session.getAttribute("username") == null) { %>
-                <li class="nav-item"><a href="../login.jsp" class="nav-link">Login</a></li>
-                <li class="nav-item"><a href="../register.jsp" class=" btn-primary">Register</a></li>
+                <li class="nav-item"><a href="login.jsp" class="nav-link">Login</a></li>
+                <li class="nav-item"><a href="register.jsp" class=" btn-primary">Register</a></li>
                 <% } else { %>
-                <li class="nav-item"><a href="../login.jsp" class="nav-link">Logout</a></li>
-                <li class="nav-item"><a href="../menu.jsp" class=" btn-primary">Order</a></li>
+                <li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>
+                <li class="nav-item"><a href="menu.jsp" class=" btn-primary">Order</a></li>
                 <% } %>
             </ul>
         </nav>
@@ -51,7 +51,7 @@
             <div class="checkout-list">
 				<%
 					if (session.getAttribute("username") == null)
-						response.sendRedirect("login.jsp");
+						response.sendRedirect("/CafeOS/login.jsp");
 					else{
 						/* USER AUTHENTICATION */
 						int uid = Integer.parseInt(session.getAttribute("userId").toString());
