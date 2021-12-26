@@ -21,4 +21,8 @@ public class Menu
 	
 	public float getPrice() { return price; }
 	public void setPrice(float price) { this.price = price;	}
+	@Override
+	public String toString() {
+		return "Menu [menuId=" + menuId + ", categoryId=" + categoryId + ", name=" + name + ", price=" + price + "]";
+	}
 }

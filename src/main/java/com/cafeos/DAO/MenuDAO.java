@@ -125,6 +125,34 @@ public class MenuDAO
 		return m;
 	}
 	
+	public static List<Menu> getByCategoryId(int id)
+	{
+		List<Menu> list = new ArrayList<Menu>();
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM `menu` WHERE categoryId=?;");
+			
+			pst.setInt(1, id);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			while (rs.next())
+			{	
+				Menu m = new Menu();
+				m.setMenuId(rs.getInt("menuId"));
+				m.setCategoryId(rs.getInt("categoryId"));
+				m.setName(rs.getString("name"));
+				m.setPrice(rs.getFloat("price"));
+				list.add(m);
+			}
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return list;
+	}
+	
 	public static String getCategoryString(int id)
 	{
 		try
