@@ -133,4 +133,54 @@ public class UserDAO
 		
 		return u;
 	}
+
+		
+	//Validate username (email) and password for login
+	public boolean validate(User u) {
+		
+		boolean status = false;
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM user WHERE email=? AND password=?");
+			
+			pst.setString(1, u.getEmail());
+			pst.setString(2, u.getPassword());
+			
+			ResultSet rs = pst.executeQuery();
+			status = rs.next();
+			u.setUserId(rs.getInt("userId"));
+			u.setIsAdmin((short) rs.getInt("isAdmin"));
+			//System.out.println(u.getUserId());
+			//System.out.println(u.getIsAdmin());
+			//System.out.println(status); //check status
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return status;
+		
+	}
+	
+	//validate if email already exist
+	public boolean validateEmail(User u) {
+			
+			boolean status = false;
+			
+			try
+			{
+				Connection con = ConHandler.getConnection();
+				PreparedStatement pst = con.prepareStatement("SELECT * FROM user WHERE email=?");
+				
+				pst.setString(1, u.getEmail());
+				
+				ResultSet rs = pst.executeQuery();
+				status = rs.next();
+				//System.out.println(status); //check status
+			}
+			catch (Exception ex) { System.out.println(ex); }
+			
+			return status;
+			
+		}
 }

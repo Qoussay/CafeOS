@@ -17,7 +17,7 @@ public class OrderDAO
 		try
 		{
 			Connection con = ConHandler.getConnection();
-			PreparedStatement pst = con.prepareStatement("INSERT INTO order(userId, orderNames, totalPrice, date, isCompleted) values(?,?,?,?,?);");
+			PreparedStatement pst = con.prepareStatement("INSERT INTO `order` (userId, orderNames, totalPrice, date, isCompleted) values(?,?,?,?,?);");
 			
 			pst.setInt(1, o.getUserId());
 			pst.setString(2, o.getOrderNames());
@@ -61,18 +61,21 @@ public class OrderDAO
 		return list;
 	}
 	
-	public static List<Order> getPendingOrder()
+	public static List<Order> getOrderByDate(String date)
 	{
 		List<Order> list = new ArrayList<Order>();
 		
 		try
 		{
 			Connection con = ConHandler.getConnection();
-			PreparedStatement pst = con.prepareStatement("SELECT * FROM `order` WHERE isCompleted=0;");
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM `order` WHERE date=?;");
+			
+			pst.setString(1, date);
+			
 			ResultSet rs = pst.executeQuery();
 			
 			while (rs.next())
-			{				
+			{
 				Order o = new Order();
 				
 				o.setOrderId(rs.getInt("orderId"));
@@ -135,5 +138,48 @@ public class OrderDAO
 		catch (Exception ex) { System.out.println(ex); }
 		
 		return status;
+	}
+	
+	public static int undoCompleteOrder(int id)
+	{
+		int status = 0;
+		
+		try
+		{
+			Connection con = ConHandler.getConnection();
+			PreparedStatement pst = con.prepareStatement("UPDATE `order` SET isCompleted=0 WHERE orderId=?;");
+			
+			pst.setInt(1, id);
+			
+			status = pst.executeUpdate();
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return status;
+	}
+	
+	// Utility
+	public static List<Order> filterOrderByStatus(List<Order> list, short statusFilter)
+	{
+		List<Order> input_list = list;
+		List<Order> output_list = new ArrayList<Order>();
+		
+		try
+		{
+			if (input_list == null)
+				input_list = getAllOrder();
+
+			if (statusFilter == 2)
+				return input_list;
+			
+			for (Order order : input_list)
+			{	
+				if (order.getIsCompleted() == statusFilter)
+					output_list.add(order);
+			}
+		}
+		catch (Exception ex) { System.out.println(ex); }
+		
+		return output_list;
 	}
 }

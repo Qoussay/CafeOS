@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,19 +21,24 @@
     <!-- ======== HEADER ======== -->
     <header class="header">
         <h2 class="header-logo">
-            <a href="index.html">Java Beans</a>
+            <a href="index.jsp">Java Beans</a>
         </h2>
         <i class="fas fa-bars header-toggle" id="header-toggle"></i>
 
         <nav class="nav" id="nav">
             <i class="fas fa-times nav-close" id="nav-close"></i>
-
             <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="index.jsp#about" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Menu</a></li>
-                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
-                <li class="nav-item"><a href="register.html" class=" btn-primary">Register</a></li>
+                <li class="nav-item"><a href="action/checkout.jsp" class="nav-link">Cart</a></li>
+                <li class="nav-item"><a href="index.jsp#contact" class="nav-link">Contact</a></li>
+                <% if (session.getAttribute("username") == null) { %>
+                <li class="nav-item"><a href="login.jsp" class="nav-link">Login</a></li>
+                <li class="nav-item"><a href="register.jsp" class=" btn-primary">Register</a></li>
+                <% } else { %>
+                <li class="nav-item"><a href="login.jsp" class="nav-link">Logout</a></li>
+                <li class="nav-item"><a href="menu.jsp" class=" btn-primary">Order</a></li>
+                <% } %>
             </ul>
         </nav>
     </header>
@@ -47,7 +55,12 @@
                     </p>
                     <h2 class="featured-cost">RM 8.50</h2>
                     <div class="featured-buttons">
-                        <a href="checkout.html" class="btn-primary">Add to Cart</a>
+                        <form action="menu" method="post">
+	                    	<input type="hidden" name="item_name" value="Midnight Frappuccino">
+	                    	<input type="hidden" name="item_price" value="8.50">
+	                    	<input type="hidden" name="request" value="addItem">
+		                    <button type="submit" class="btn-primary">Add To Cart</button>
+                    	</form>
                     </div>
                 </div>
                 <div class="featured-circle">
@@ -86,36 +99,67 @@
             <!-- Drinks -->
             <h2 class="menu-heading">Drinks</h2>
             <div class="menu-grid">
+            
+            <!-- FORM USED FOR ADDING ITEM INFORMATION TO THE ARRAY -->
                 <div class="menu-item">
+                
                     <img src="./assets/img/coffee-menu-1-removebg-preview.png" alt="">
                     <h3 class="menu-title">Java Express</h3>
                     <p class="menu-description">Lorem ipsum dolor sit amet.</p>
                     <p class="menu-price">RM 6.90</p>
-                    <a href="#" class="btn-primary">Add To Cart</a>
+	                    
+	                <form action="menu" method="post">
+                    	<input type="hidden" name="item_name" value="Java Express">
+                    	<input type="hidden" name="item_price" value="6.90">
+	                    	<input type="hidden" name="request" value="addItem">
+	                    <button type="submit" class="btn-primary">Add To Cart</button>
+                    </form>
                 </div>
+               
 
                 <div class="menu-item">
+                
                     <img src="./assets/img/latte-removebg-preview.png" alt="">
                     <h3 class="menu-title">Midnight Frappuccino</h3>
                     <p class="menu-description">Lorem ipsum dolor sit amet.</p>
                     <p class="menu-price">RM 8.50</p>
-                    <a href="#" class="btn-primary">Add To Cart</a>
+	                    
+	                <form action="menu" method="post">
+                    	<input type="hidden" name="item_name" value="Midnight Frappuccino">
+                    	<input type="hidden" name="item_price" value="8.50">
+	                    	<input type="hidden" name="request" value="addItem">
+	                    <button type="submit" class="btn-primary">Add To Cart</button>
+                    </form>
                 </div>
 
                 <div class="menu-item">
+                
                     <img src="./assets/img/lattebeans.png" alt="">
                     <h3 class="menu-title">Bean Delight</h3>
                     <p class="menu-description">Lorem ipsum dolor sit amet.</p>
                     <p class="menu-price">RM 7.90</p>
-                    <a href="#" class="btn-primary">Add To Cart</a>
+	                    
+                	<form action="menu" method="post">
+                    	<input type="hidden" name="item_name" value="Bean Delight">
+                    	<input type="hidden" name="item_price" value="7.90">
+	                    	<input type="hidden" name="request" value="addItem">
+	                    <button type="submit" class="btn-primary">Add To Cart</button>
+                    </form>
                 </div>
 
                 <div class="menu-item">
+                
                     <img src="./assets/img/icebeans-removebg-preview.png" alt="">
                     <h3 class="menu-title">Iced Bean Delight</h3>
                     <p class="menu-description">Lorem ipsum dolor sit amet.</p>
                     <p class="menu-price">RM 8.90</p>
-                    <a href="#" class="btn-primary">Add To Cart</a>
+                    
+	                <form action="menu" method="post">
+                    	<input type="hidden" name="item_name" value="Icead Bean Delight">
+                    	<input type="hidden" name="item_price" value="8.90">
+	                    	<input type="hidden" name="request" value="addItem">
+	                    <button type="submit" class="btn-primary">Add To Cart</button>
+                    </form>
                 </div>
             </div>
 
@@ -123,27 +167,48 @@
             <h2 class="menu-heading">Food</h2>
             <div class="menu-grid">
                 <div class="menu-item">
+                
                     <img src="./assets/img/brownies-removebg-preview.png" alt="">
                     <h3 class="menu-title">Bean Brownies</h3>
                     <p class="menu-description">Lorem ipsum dolor sit amet.</p>
                     <p class="menu-price">RM 13.90</p>
-                    <a href="#" class="btn-primary">Add To Cart</a>
+                    
+                    <form action="menu" method="post">
+                    	<input type="hidden" name="item_name" value="Bean Brownies">
+                    	<input type="hidden" name="item_price" value="13.90">
+	                    	<input type="hidden" name="request" value="addItem">
+	                    <button type="submit" class="btn-primary">Add To Cart</button>
+                    </form>
                 </div>
 
                 <div class="menu-item">
-                    <img src="./assets/img/cheeseburger.png" alt="">
-                    <h3 class="menu-title">Signature Burger</h3>
-                    <p class="menu-description">Lorem ipsum dolor sit amet.</p>
-                    <p class="menu-price">RM 14.50</p>
-                    <a href="#" class="btn-primary">Add To Cart</a>
+                	
+	                    <img src="./assets/img/cheeseburger.png" alt="">
+	                    <h3 class="menu-title">Signature Burger</h3>
+	                    <p class="menu-description">Lorem ipsum dolor sit amet.</p>
+	                    <p class="menu-price">RM 14.50</p>
+	                    
+                    <form action="menu" method="post">
+                    	<input type="hidden" name="item_name" value="Signature Burger">
+                    	<input type="hidden" name="item_price" value="14.50">
+	                    	<input type="hidden" name="request" value="addItem">
+	                    <button type="submit" class="btn-primary">Add To Cart</button>
+                    </form>
                 </div>
 
                 <div class="menu-item">
-                    <img src="./assets/img/crossianttrans.png" alt="">
+                	
+                   	<img src="./assets/img/crossianttrans.png" alt="">
                     <h3 class="menu-title">Crossiant Express</h3>
                     <p class="menu-description">Lorem ipsum dolor sit amet.</p>
                     <p class="menu-price">RM 2.90</p>
-                    <a href="#" class="btn-primary">Add To Cart</a>
+                    
+					<form action="menu" method="post">
+	                   	<input type="hidden" name="item_name" value="Croissant Express">
+	                    <input type="hidden" name="item_price" value="2.90">
+	                    	<input type="hidden" name="request" value="addItem">
+	                    <button type="submit" class="btn-primary">Add To Cart</button>
+                    </form>
                 </div>
             </div>
         </div>
