@@ -54,7 +54,7 @@ public class LoginServlet extends jakarta.servlet.http.HttpServlet {
 			session.setAttribute("userId", user.getUserId());
 			if(user.getIsAdmin()==0) {
 				response.sendRedirect("index.jsp");
-			}else {
+			} else {
 				response.sendRedirect("admin/staff-dashboard.jsp");
 			}
 			
